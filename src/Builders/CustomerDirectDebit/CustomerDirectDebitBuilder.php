@@ -67,7 +67,7 @@ final class CustomerDirectDebitBuilder
         $xmDocument->setAttributeNS(
             'http://www.w3.org/2001/XMLSchema-instance',
             'xsi:schemaLocation',
-            'urn:iso:std:iso:20022:tech:xsd:pain.008.001.02.xsdpain.008.001.02'
+            'urn:iso:std:iso:20022:tech:xsd:pain.008.001.02 pain.008.001.02.xsd'
         );
         $this->instance->appendChild($xmDocument);
 

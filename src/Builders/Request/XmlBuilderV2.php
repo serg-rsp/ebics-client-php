@@ -49,6 +49,16 @@ final class XmlBuilderV2 extends XmlBuilder
                 'xmlns:ds',
                 'http://www.w3.org/2000/09/xmldsig#'
             );
+           /* $this->instance->setAttributeNS(
+                'http://www.w3.org/2000/xmlns/',
+                'xmlns:xsi',
+                'http://www.w3.org/2001/XMLSchema-instance'
+            );
+            $this->instance->setAttributeNS(
+                'http://www.w3.org/2001/XMLSchema-instance',
+                'xsi:schemaLocation',
+                'urn:org:ebics:H004 ebics_H004.xsd'
+            );*/
         }
         $this->instance->setAttribute('Version', 'H004');
         $this->instance->setAttribute('Revision', '1');

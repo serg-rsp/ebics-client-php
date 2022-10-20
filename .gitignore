@@ -1,6 +1,12 @@
 # IntellijIdea files
 .idea
 
+#NetBeans IDE
+/nbproject/
+
+# VScode config
+.vscode
+
 # Composer
 composer.lock
 vendor
