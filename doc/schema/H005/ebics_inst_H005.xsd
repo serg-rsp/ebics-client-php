@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ebics="urn:org:ebics:H005" targetNamespace="urn:org:ebics:H005" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<annotation>
+		<documentation xml:lang="en">ebics_inst_H005.xsd includes all schema files (delta for instant payments incuded) in order to enforce unique element and type names in the EBICS namespace.</documentation>
+	</annotation>
+	<include schemaLocation="ebics_request_H005.xsd"/>
+	<include schemaLocation="ebics_inst_request_H005.xsd"/>
+	<include schemaLocation="ebics_response_H005.xsd"/>
+	<include schemaLocation="ebics_keymgmt_request_H005.xsd"/>
+	<include schemaLocation="ebics_keymgmt_response_H005.xsd"/>
+</schema>
