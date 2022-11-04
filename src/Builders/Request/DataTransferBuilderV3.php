@@ -23,10 +23,13 @@ final class DataTransferBuilderV3 extends DataTransferBuilder
         return $this;
     }
 
-    public function addAdditionalOrderInfo(): DataTransferBuilder
+    public function addAdditionalOrderInfo(string $text = null): DataTransferBuilder
     {
-        $xmlAdditionalOrderInfo = $this->dom->createElement('AdditionalOrderInfo');
-        $this->instance->appendChild($xmlAdditionalOrderInfo);
+        if ($text !== null) {
+            $xmlAdditionalOrderInfo = $this->dom->createElement('AdditionalOrderInfo');
+            $this->instance->appendChild($xmlAdditionalOrderInfo);
+            $xmlAdditionalOrderInfo->nodeValue = $text;
+        }
 
         return $this;
     }

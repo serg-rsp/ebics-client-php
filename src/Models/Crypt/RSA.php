@@ -1181,7 +1181,7 @@ final class RSA implements RSAInterface
         }
         $type = 2;
         // see the comments of _rsaes_pkcs1_v1_5_decrypt() to understand why this is being done
-        if (defined('CRYPT_RSA_PKCS15_COMPAT') &&
+        if (defined('CRYPT_RSA_PKCS15_COMPAT') && false != CRYPT_RSA_PKCS15_COMPAT &&
             (!isset($this->publicExponent) || $this->exponent !== $this->publicExponent)) {
             $type = 1;
             // "The padding string PS shall consist of k-3-||D|| octets. ...

@@ -11,3 +11,5 @@
 * Updated AbstractX509Generator to handle custom options.
 * Improved Bank-letter
 * Add CustomerServiceContainer for create Service XML-Container (SVC format)
+* Add ability to select user signature A006
+* Fix headers of EBICS 3.0 BTU request

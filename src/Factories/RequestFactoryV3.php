@@ -175,7 +175,10 @@ final class RequestFactoryV3 extends RequestFactory
                             ->addOrderDetails(function (OrderDetailsBuilder $orderDetailsBuilder) use ($context) {
                                 $this
                                     ->addOrderType($orderDetailsBuilder, 'BTU')
-                                    ->addOrderId('A001')
+                                    /** @see https://www.ebics.org/en/technical-information/ebics-specification
+                                     *  OrderID is only present if a file is transmitted to the bank relating to an order with an already existing order number (only allowed for AdminOrderType = HVE or HVS)
+                                     */
+                                    //->addOrderId('A001')
                                     ->addBTUOrderParams($context->getBTUContext());
                             })
                             ->addBankPubKeyDigests(

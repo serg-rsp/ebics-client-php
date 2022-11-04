@@ -22,6 +22,7 @@ final class KeyRing
     const PUBLIC_KEY_PREFIX = 'PUBLIC_KEY';
     const PRIVATE_KEY_PREFIX = 'PRIVATE_KEY';
 
+    private string $userSignatureAVersion = 'A005';
     private ?SignatureInterface $userSignatureA;
     private ?SignatureInterface $userSignatureX;
     private ?SignatureInterface $userSignatureE;
@@ -47,7 +48,15 @@ final class KeyRing
      */
     public function getUserSignatureAVersion(): string
     {
-        return 'A005';
+        return $this->userSignatureAVersion;
+    }
+
+    public function setUserSignatureAVersion(string $version): void
+    {
+        if (!in_array($version, ['A005','A006'], 1)) {
+            throw new InvalidArgumentException('Invalide signature version');
+        }
+        $this->userSignatureAVersion = $version;
     }
 
     public function setUserSignatureX(SignatureInterface $signature = null): void
