@@ -341,6 +341,29 @@ final class EbicsClient implements EbicsClientInterface
      * @inheritDoc
      * @throws Exceptions\EbicsException
      */
+    public function HAC(DateTimeInterface $dateTime = null): DownloadOrderResult
+    {
+        if (null === $dateTime) {
+            $dateTime = new DateTime();
+        }
+
+        $transaction = $this->downloadTransaction(
+            function ($segmentNumber, $isLastSegment) use ($dateTime) {
+                return $this->requestFactory->createHAC(
+                    $dateTime,
+                    $segmentNumber,
+                    $isLastSegment
+                );
+            }
+        );
+
+        return $this->createDownloadOrderResult($transaction, 'xml');
+    }
+
+    /**
+     * @inheritDoc
+     * @throws Exceptions\EbicsException
+     */
     public function HTD(DateTimeInterface $dateTime = null): DownloadOrderResult
     {
         if (null === $dateTime) {
@@ -785,6 +808,29 @@ final class EbicsClient implements EbicsClientInterface
             $transaction->setOrderData($orderData->getContent());
             $transaction->setDigest($this->cryptService->hash($transaction->getOrderData()));
             return $this->requestFactory->createCDD(
+                $dateTime,
+                $transaction
+            );
+        });
+
+        return $this->createUploadOrderResult($transaction, $orderData);
+    }
+
+    /**
+     * @inheritDoc
+     * @throws Exceptions\EbicsResponseException
+     * @throws EbicsException
+     */
+    public function CDS(OrderDataInterface $orderData, DateTimeInterface $dateTime = null): UploadOrderResult
+    {
+        if (null === $dateTime) {
+            $dateTime = new DateTime();
+        }
+
+        $transaction = $this->uploadTransaction(function (UploadTransaction $transaction) use ($dateTime, $orderData) {
+            $transaction->setOrderData($orderData->getContent());
+            $transaction->setDigest($this->cryptService->hash($transaction->getOrderData()));
+            return $this->requestFactory->createCDS(
                 $dateTime,
                 $transaction
             );

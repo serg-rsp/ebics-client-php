@@ -290,6 +290,7 @@ try {
 | HPD         | Download the bank server parameters.                                                                              |
 | HKD         | Download customer's customer and subscriber information.                                                          |
 | HTD         | Download subscriber's customer and subscriber information.                                                        |
+| HAC         | Download transaction status (XML-format).                                                                         |
 | PTK         | Download transaction status.                                                                                      |
 | FDL         | Download the files from the bank.                                                                                 |
 | FUL         | Upload the files to the bank.                                                                                     |
@@ -308,6 +309,7 @@ try {
 | XE2         | Upload initiation of the Swiss credit transfer (i.e available in Switzerland).                                    |
 | YCT         | Upload Credit transfer CGI (SEPA & non SEPA).                                                                     |
 | CDD         | Upload initiation of the direct debit transaction.                                                                |
+| CDS         | Upload initiation of the direct debit transaction in service XML-container.                                       |
 | BTD         | Download request files of any BTF structure.                                                                      |
 | BTU         | Upload the files to the bank.                                                                                     |
 | HVU         | Download List the orders for which the user is authorized as a signatory.                                         |

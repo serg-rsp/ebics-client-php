@@ -113,6 +113,13 @@ interface EbicsClientInterface
     public function HTD(DateTimeInterface $dateTime = null): DownloadOrderResult;
 
     /**
+     * Download transaction status (XML-format).
+     * @param DateTimeInterface|null $dateTime
+     * @return DownloadOrderResult
+     */
+    public function HAC(DateTimeInterface $dateTime = null): DownloadOrderResult;
+
+    /**
      * Download transaction status.
      * @param DateTimeInterface|null $dateTime
      * @return DownloadOrderResult
@@ -316,6 +323,17 @@ interface EbicsClientInterface
      * @return UploadOrderResult
      */
     public function CDD(OrderDataInterface $orderData, DateTimeInterface $dateTime = null): UploadOrderResult;
+
+    /**
+     * Upload initiation of the direct debit transaction.
+     * The CDS order type uses the protocol version H00X.
+     * FileFormat pain.008.001.02
+     * OrderType:BTU, Service Name:SDD, Scope:DE, Service Option:COR Container:SVC, MsgName:pain.008
+     * @param OrderDataInterface $orderData
+     * @param DateTimeInterface|null $dateTime
+     * @return UploadOrderResult
+     */
+    public function CDS(OrderDataInterface $orderData, DateTimeInterface $dateTime = null): UploadOrderResult;
 
     /**
      * Upload initiation credit transfer per Swiss Payments specification set by Six banking services.
